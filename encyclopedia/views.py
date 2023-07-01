@@ -143,6 +143,8 @@ def edit(request, title):
         content = util.get_entry(title)
         # Create a form instance and populate it with data from the request
         form = NewEntryForm({"title": title, "content": content})
+        # Make the title read-only
+        form.fields["title"].widget.attrs["readonly"] = True
         # Display the form
         return render(
             request,
