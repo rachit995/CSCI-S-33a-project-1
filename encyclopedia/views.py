@@ -16,7 +16,9 @@ class NewEntryForm(forms.Form):
 
 
 def index(request):
-    return render(request, "encyclopedia/index.html", {"entries": util.list_entries()})
+    return render(
+        request, "encyclopedia/index.html", {"entries": util.list_entries()}
+    )
 
 
 def entry(request, title):
@@ -47,7 +49,8 @@ def search(request):
             )
         )
     else:
-        # If the query is not an exact match for an entry, display a list of entries that match the query
+        # If the query is not an exact match for an entry, display a list of
+        # entries that match the query
         # Get a list of all entries
         entries = util.list_entries()
         results = []
@@ -55,7 +58,9 @@ def search(request):
         for entry in entries:
             if query.lower() in entry.lower():
                 results.append(entry)
-        return render(request, "encyclopedia/search.html", {"results": results})
+        return render(
+            request, "encyclopedia/search.html", {"results": results}
+        )
 
 
 def add(request):
@@ -139,7 +144,8 @@ def edit(request, title):
                 },
             )
     else:
-        # If the form hasn't been submitted, display a form with the entry's current content
+        # If the form hasn't been submitted, display a form with the entry's
+        # current content
         content = util.get_entry(title)
         # Create a form instance and populate it with data from the request
         form = NewEntryForm({"title": title, "content": content})
