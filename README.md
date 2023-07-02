@@ -31,6 +31,7 @@ Design a Wikipedia-like online encyclopedia.
 ### How to run
 
 1. Clone the repository
-2. Run `python manage.py runserver` in the terminal
-3. Open the link in the browser
+2. Install dependencies `pip install -r requirements.txt`
+3. Run `python manage.py runserver` in the terminal
+4. Open the link in the browser
 
