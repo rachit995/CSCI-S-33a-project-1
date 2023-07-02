@@ -14,7 +14,10 @@
 <body>
     <div class="row">
         <div class="sidebar col-lg-2 col-md-3">
-            <h2>Wiki</h2>
+            <h2>
+                <i class="fa-solid fa-book mr-2"></i>
+                Wiki
+            </h2>
             <form method="get" action="{% url 'search' %}">
                 <div class="relative search-container">
                     <i class="fas fa-search mr-2 search-icon"></i>
@@ -22,30 +25,32 @@
                         value="{{ query }}">
                 </div>
             </form>
-            <div>
-                <a href="{% url 'index' %}">
-                    <i class="fas fa-home mr-2"></i>
-                    Home
-                </a>
-            </div>
-            <div>
-                <a href="{% url 'add' %}">
-                    <i class="fas fa-plus mr-2"></i>
-                    Create New Page
-                </a>
-            </div>
-            <div>
-                <a href="{% url 'random' %}">
-                    <i class="fas fa-random mr-2"></i>
-                    Random Page
-                </a>
-            </div>
-            <div>
-                <a href="https://github.com/rachit995/CSCI-S-33a-project-1" target="_blank">
-                    <i class="fab fa-github mr-2"></i>
-                    Github Repo
-                </a>
-            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-transparent pl-1">
+                    <a href="{% url 'index' %}">
+                        <i class="fas fa-home mr-2"></i>
+                        Home
+                    </a>
+                </li>
+                <li class="list-group-item bg-transparent pl-1">
+                    <a href="{% url 'add' %}">
+                        <i class="fas fa-plus mr-2"></i>
+                        Create New Page
+                    </a>
+                </li>
+                <li class="list-group-item bg-transparent pl-1">
+                    <a href="{% url 'random' %}">
+                        <i class="fas fa-random mr-2"></i>
+                        Random Page
+                    </a>
+                </li>
+                <li class="list-group-item bg-transparent pl-1">
+                    <a href="https://github.com/rachit995/CSCI-S-33a-project-1" target="_blank">
+                        <i class="fab fa-github mr-2"></i>
+                        Github Repo
+                    </a>
+                </li>
+            </ul>
             {% block nav %}
             {% endblock %}
         </div>

@@ -5,14 +5,27 @@
 {% endblock %}
 
 {% block body %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb bg-transparent px-2">
+    <li class="breadcrumb-item">
+      <a href="{% url 'index' %}">
+        Home
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">{{title}}</li>
+  </ol>
+</nav>
 
-{{ entry|safe }}
+<div class="px-2">
+  {{ entry|safe }}
+  {% if not error %}
+  <a href="{% url 'edit' title %}" class="btn btn-primary mt-3">
+    <i class="fas fa-edit mr-2"></i>
+    Edit Page
+  </a>
+  {% endif %}
+</div>
 
-{% if not error %}
-<a href="{% url 'edit' title %}" class="btn btn-primary mt-3">
-  <i class="fas fa-edit mr-2"></i>
-  Edit Page
-</a>
-{% endif %}
+
 
 {% endblock %}
