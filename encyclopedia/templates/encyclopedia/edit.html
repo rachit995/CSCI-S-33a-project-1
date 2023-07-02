@@ -18,7 +18,10 @@ Edit Page
 <form method="post" action="{% url 'edit' title %}">
   {% csrf_token %}
   {{ form.as_p }}
-  <input type="submit" value="Save">
+  <button type="submit" class="btn btn-primary">
+    <i class="fas fa-save mr-2"></i>
+    Save Page
+  </button>
 </form>
 
 {% endblock %}

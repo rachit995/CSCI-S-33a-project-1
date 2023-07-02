@@ -11,8 +11,25 @@ from . import util
 
 # Create a form for adding and editing entries
 class NewEntryForm(forms.Form):
-    title = forms.CharField(label="Title")
-    content = forms.CharField(widget=forms.Textarea, label="Content")
+    title = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Enter title",
+                "class": "form-control col-md-8 col-lg-8",
+            }
+        ),
+        label="Title",
+    )
+    content = forms.CharField(
+        widget=forms.Textarea(
+            attrs={
+                "rows": 10,
+                "placeholder": "Enter content in Markdown Eg. # Title",
+                "class": "form-control col-md-8 col-lg-8",
+            }
+        ),
+        label="Content",
+    )
 
 
 def index(request):
@@ -22,6 +39,7 @@ def index(request):
 
 
 def entry(request, title):
+    error = None
     # If the entry exists, display it
     try:
         # Convert the markdown to HTML
@@ -29,10 +47,11 @@ def entry(request, title):
     except TypeError:
         # If the entry doesn't exist, display an error
         entry = "Page not found"
+        error = True
     return render(
         request,
         "encyclopedia/entry.html",
-        {"entry": entry, "title": title},
+        {"entry": entry, "title": title, "error": error},
     )
 
 
@@ -59,7 +78,9 @@ def search(request):
             if query.lower() in entry.lower():
                 results.append(entry)
         return render(
-            request, "encyclopedia/search.html", {"results": results}
+            request,
+            "encyclopedia/search.html",
+            {"results": results, "query": query},
         )
 
 
@@ -81,7 +102,7 @@ def add(request):
                     "encyclopedia/add.html",
                     {
                         "form": form,
-                        "error": "Entry already exists",
+                        "error": "Page already exists",
                     },
                 )
             else:

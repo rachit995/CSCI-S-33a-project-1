@@ -16,33 +16,45 @@
         <div class="sidebar col-lg-2 col-md-3">
             <h2>Wiki</h2>
             <form method="get" action="{% url 'search' %}">
-                <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
+                <div class="relative search-container">
+                    <i class="fas fa-search mr-2 search-icon"></i>
+                    <input class="search-input form-control mb-4" type="text" name="q" placeholder="Search Encyclopedia"
+                        value="{{ query }}">
+                </div>
             </form>
             <div>
-                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'index' %}">
+                    <i class="fas fa-home mr-2"></i>
+                    Home
+                </a>
             </div>
             <div>
-                <a href="{% url 'add' %}">Create New Page</a>
+                <a href="{% url 'add' %}">
+                    <i class="fas fa-plus mr-2"></i>
+                    Create New Page
+                </a>
             </div>
             <div>
                 <a href="{% url 'random' %}">
+                    <i class="fas fa-random mr-2"></i>
                     Random Page
                 </a>
             </div>
             <div>
                 <a href="https://github.com/rachit995/CSCI-S-33a-project-1" target="_blank">
+                    <i class="fab fa-github mr-2"></i>
                     Github Repo
                 </a>
             </div>
             {% block nav %}
             {% endblock %}
         </div>
-        <div class="main col-lg-10 col-md-9">
+        <div class="main col-lg-10 col-md-9 px-4">
             {% block body %}
             {% endblock %}
         </div>
     </div>
-
+    <script src="https://kit.fontawesome.com/c107957f71.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

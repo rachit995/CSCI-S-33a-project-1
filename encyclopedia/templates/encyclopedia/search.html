@@ -5,18 +5,23 @@ Search Results
 {% endblock %}
 
 {% block body %}
-<h1>Search Results</h1>
+<h1>
+  Search Results for "{{ query }}"
+</h1>
 
 {% if results %}
-<ul>
+<div class="list-group">
   {% for entry in results %}
-  <li>
-    <a href="{% url 'entry' entry %}">{{ entry }}</a>
-  </li>
+  <a href="{% url 'entry' entry %}" class="list-group-item list-group-item-action">
+    <i class="fas fa-book mr-2"></i>
+    {{ entry }}
+  </a>
   {% endfor %}
-</ul>
+</div>
 {% else %}
-<p>No results found.</p>
+<div class="alert alert-danger" role="alert">
+  No results found.
+</div>
 {% endif %}
 
 {% endblock %}
